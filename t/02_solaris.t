@@ -1,4 +1,4 @@
-# t/05_solaris.t; load Software::Packager and create a Solaris package
+# t/05_svr4.t; load Software::Packager and create a SVR4 package
 
 $|++; 
 use Software::Packager;
@@ -9,18 +9,8 @@ use Data::Dumper;
 my $test_number = 1;
 my $comment = "";
 
-if ($Config{'osname'} =~ /solaris/i)
-{
-	print "1..21\n";
-}
-else
-{
-	print "1..0\n";
-	exit 0;
-}
-
 # test 1
-my $packager = new Software::Packager('solaris');
+my $packager = new Software::Packager('svr4');
 print_status($packager);
 
 # test 2
@@ -98,9 +88,9 @@ my $install_dir = $packager->install_dir();
 same("/perllib", $install_dir);
 
 # test 16
-$packager->tmp_dir("t/solaris_tmp_build_dir");
+$packager->tmp_dir("t/svr4_tmp_build_dir");
 my $tmp_dir = $packager->tmp_dir();
-same($tmp_dir, "t/solaris_tmp_build_dir");
+same($tmp_dir, "t/svr4_tmp_build_dir");
 
 # test 17
 # so we have finished the configuration so add the objects.
@@ -136,7 +126,7 @@ print_status($add_status);
 # test 18
 my %hardlink;
 $hardlink{'TYPE'} = 'Hardlink';
-$hardlink{'SOURCE'} = "lib/Software/Packager/Solaris.pm";
+$hardlink{'SOURCE'} = "lib/Software/Packager/Svr4.pm";
 $hardlink{'DESTINATION'} = "HardLink.pm";
 print_status($packager->add_item(%hardlink));
 

@@ -28,7 +28,7 @@ use POSIX qw(uname);
 use base qw( Software::Packager );
 use Software::Packager::Object::Svr4;
 our $VERSION;
-$VERSION = substr(q$Revision 1.0$, 9);
+$VERSION = substr(q$Revision: 1.2 $, 9);
 
 =head2 B<new()>
 
